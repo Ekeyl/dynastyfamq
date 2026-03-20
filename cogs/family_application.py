@@ -17,6 +17,9 @@ MENTION_ROLES = [1449567765810778211, 1449567765810778210, 1449567765810778205, 
 # Единый цвет для всех эмбедов
 EMBED_COLOR = discord.Color(0x393a41)
 
+# Кастомный логотип для эмбедов
+CUSTOM_LOGO_URL = "https://media.discordapp.net/attachments/1350576020327108608/1484557483312943175/image.png?ex=69bea965&is=69bd57e5&hm=59b0c07b7daf2ed7fd6d95fedc7d24d98753b177c91af462661439e43ad44f7f&=&format=webp&quality=lossless"
+
 # --- БАЗЫ ДАННЫХ ---
 APPLICATIONS_DB = 'applications.db'
 STATS_DB = 'stats.db'
@@ -451,7 +454,7 @@ class RecruiterStatsMenu(View):
             f"{player_list}"
         ).replace(',', ' ')
 
-        embed.set_footer(text=f"Статистика рекрутера", icon_url=self.ctx.guild.icon.url if self.ctx.guild.icon else None)
+        embed.set_footer(text=f"Статистика рекрутера", icon_url=CUSTOM_LOGO_URL)
         return embed
 
 
@@ -525,8 +528,10 @@ class FamilyApplicationCog(commands.Cog):
             ),
             color=EMBED_COLOR
         )
-        if ctx.guild.icon:
-            embed.set_thumbnail(url=ctx.guild.icon.url)
+        
+        # Заменили иконку сервера на кастомный логотип
+        embed.set_thumbnail(url=CUSTOM_LOGO_URL)
+        
         embed.set_image(url="https://media.discordapp.net/attachments/1350576020327108608/1484607010078195743/image.png?ex=69bed785&is=69bd8605&hm=6f2bf4d64d7c7d397c9e5289f20ba39c5c8cc23d57d284b10276c49cb0d1a699&=&format=webp&quality=lossless")
         view = ApplyView()
         await ctx.respond(embed=embed, view=view)
@@ -613,7 +618,7 @@ class FamilyApplicationCog(commands.Cog):
         )
         embed.set_author(
             name=f"Статистика рекрутеров · {period}",
-            icon_url=ctx.guild.icon.url if ctx.guild.icon else None
+            icon_url=CUSTOM_LOGO_URL
         )
 
         total_all = sum(len(d) for d in detailed_data.values())
@@ -678,7 +683,7 @@ class FamilyApplicationCog(commands.Cog):
 
         embed.set_footer(
             text=f"Общая статистика",
-            icon_url=ctx.guild.icon.url if ctx.guild.icon else None
+            icon_url=CUSTOM_LOGO_URL
         )
 
         view = RecruiterStatsMenu(ctx, period, embed, detailed_data, rejected_data)
@@ -760,7 +765,7 @@ class FamilyApplicationCog(commands.Cog):
             title=f"💸 Калькулятор ЗП · {period}",
             color=EMBED_COLOR
         )
-        embed.set_footer(text="Зарплаты рекрутеров", icon_url=ctx.guild.icon.url if ctx.guild.icon else None)
+        embed.set_footer(text="Зарплаты рекрутеров", icon_url=CUSTOM_LOGO_URL)
 
         for place, (rec_id, stats) in enumerate(sorted_salaries, 1):
             member = ctx.guild.get_member(rec_id)
