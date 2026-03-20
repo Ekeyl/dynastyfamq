@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands
 
@@ -52,5 +53,4 @@ bot.load_extension('cogs.personal_thread')
 #bot.load_extension("cogs.promotion_system")
 #bot.load_extension("cogs.ai_cog")
 
-
-bot.run("TOKEN")
+bot.run(TOKEN)
