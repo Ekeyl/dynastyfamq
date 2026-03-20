@@ -527,7 +527,7 @@ class FamilyApplicationCog(commands.Cog):
         )
         if ctx.guild.icon:
             embed.set_thumbnail(url=ctx.guild.icon.url)
-        embed.set_image(url="https://media.discordapp.net/attachments/1436676730612879370/1462457377910689893/standard_2_1.gif?ex=696e4312&is=696cf192&hm=f5d435dba5cd31e35a5159503a1b12cfa95ca5c1082d8392e0451099f449e146&=")
+        embed.set_image(url="https://media.discordapp.net/attachments/1350576020327108608/1484607010078195743/image.png?ex=69bed785&is=69bd8605&hm=6f2bf4d64d7c7d397c9e5289f20ba39c5c8cc23d57d284b10276c49cb0d1a699&=&format=webp&quality=lossless")
         view = ApplyView()
         await ctx.respond(embed=embed, view=view)
 
