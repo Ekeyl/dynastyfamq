@@ -1,0 +1,8 @@
+py-cord==2.6.0
+aiosqlite
+pyrogram
+tgcrypto
+pytz
+requests
+openai
+google-genai
