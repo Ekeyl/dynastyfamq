@@ -15,6 +15,8 @@ MY_GUILDS = [
     1362061684579106837,
     1361427242252501273
 ]
+
+TOKEN = os.getenv('TOKEN')
 # -----------------------
 
 bot = discord.Bot(debug_guilds=MY_GUILDS, intents=intents)
@@ -33,11 +35,11 @@ async def on_ready():
 #bot.load_extension('cogs.tiket') 
 #bot.load_extension('cogs.capt_event')
 #bot.load_extension('cogs.afk')
-#bot.load_extension('cogs.Events')
-#bot.load_extension('cogs.family_application')
+bot.load_extension('cogs.Events')
+bot.load_extension('cogs.family_application')
 #bot.load_extension('cogs.Mass')
 #bot.load_extension("cogs.leave_family")
-#bot.load_extension('cogs.personal_thread')
+bot.load_extension('cogs.personal_thread')
 #bot.load_extension('cogs.afk_cog')
 #bot.load_extension('cogs.logbot')
 #bot.load_extension('cogs.telegram_bot')
