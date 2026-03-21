@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 # --- НАСТРОЙКИ РОЛЕЙ И КАНАЛОВ ---
 ADMIN_ROLES = [1449567765810778211, 1449567765810778210, 1449567765810778205, 1449567765810778202]
-ACCEPTED_ROLE_ID = [1449575866630934640]
+ACCEPTED_ROLE_ID = [1449575866630934640,1449567765798191154]
 
 BASE_ACCEPTED_ROLE = 1449567765798191154
 
@@ -655,9 +655,9 @@ class FamilyApplicationCog(commands.Cog):
             rejected_count = rej_info['count']
 
             inactive = total_accepted - active
-            salary_active = active * 20000
-            salary_inactive = inactive * 5000
-            salary_rejected = rejected_count * 1000
+            salary_active = active * 0
+            salary_inactive = inactive * 0
+            salary_rejected = rejected_count * 0
             total_salary = salary_active + salary_inactive + salary_rejected
 
             medal = medal_map.get(place, f"`#{place}`")
@@ -730,10 +730,10 @@ class FamilyApplicationCog(commands.Cog):
             member = ctx.guild.get_member(user_id)
             if member is not None and REMOVE_ROLE_ID not in [r.id for r in member.roles]:
                 data['active'] += 1
-                data['total'] += 20000
+                data['total'] += 0
             else:
                 data['inactive'] += 1
-                data['total'] += 5000
+                data['total'] += 0
 
         async with aiosqlite.connect(APPLICATIONS_DB) as db:
             async with db.execute('''
@@ -749,7 +749,7 @@ class FamilyApplicationCog(commands.Cog):
             data = get_or_create(rec_id)
             
             data['rejected'] += 1
-            data['total'] += 1000
+            data['total'] += 0
 
         if not salary_data:
             embed = discord.Embed(
